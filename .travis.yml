@@ -3,6 +3,10 @@ sudo: required
 services:
   - docker
 
+language: node_js
+node_js:
+  - "node"
+
 env:
   DOCKER_COMPOSE_VERSION: 1.21.1
   COMMIT: ${TRAVIS_COMMIT::8}
@@ -24,6 +28,7 @@ before_install:
 before_script:
   - export REACT_APP_USERS_SERVICE_URL=http://127.0.0.1
   - docker-compose -f docker-compose-stage.yml up --build -d
+  - npm install
 
 after_script:
   - docker-compose -f docker-compose-stage.yml down
