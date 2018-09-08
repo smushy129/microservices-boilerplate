@@ -7,11 +7,11 @@ env:
   DOCKER_COMPOSE_VERSION: 1.21.1
   COMMIT: ${TRAVIS_COMMIT::8}
   MAIN_REPO: https://github.com/kingsleyliao/testrepo.git
-  USERS: testrepo_users
+  USERS: testrepo-users
   USERS_REPO: ${MAIN_REPO}#${TRAVIS_BRANCH}:services/users
-  USERS_DB: testrepo_users-db
+  USERS_DB: testrepo-users_db
   USERS_DB_REPO: ${MAIN_REPO}#${TRAVIS_BRANCH}:services/users/project/db
-  CLIENT: testrepo_client
+  CLIENT: testrepo-client
   CLIENT_REPO: ${MAIN_REPO}#${TRAVIS_BRANCH}:services/client
   SECRET_KEY: my_precious
 
