@@ -12,7 +12,7 @@ services:
       - APP_SETTINGS=project.config.StagingConfig
       - DATABASE_URL=postgres://postgres:postgres@users-db:5432/users_stage
       - DATABASE_TEST_URL=postgres://postgres:postgres@users-db:5432/users_test
-      - SECRET_KEY=${SECRET_KEY}
+      - SECRET_KEY=${SECRET_KEY} #check this
     depends_on:
       - users-db
 
@@ -20,7 +20,7 @@ services:
     build:
       context: ./services/users/project/db
       dockerfile: Dockerfile
-    ports:
+    ports: #check this
       - 5435:5432
     environment:
       - POSTGRES_USER=postgres
@@ -45,7 +45,7 @@ services:
       args:
         - NODE_ENV=production
         - REACT_APP_USERS_SERVICE_URL=${REACT_APP_USERS_SERVICE_URL}
-    ports:
+    ports: #check this
       - "3007:80"
     depends_on:
       - users
