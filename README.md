@@ -20,7 +20,8 @@ This is configured in `docker-push.sh`. This will push your docker container to 
 
 1. Use [RDS](https://aws.amazon.com/rds/) instead of running db instances in a EC2 instance. We still need a db service in the repo for development, but for staging and prod, we should be using an RDS
 2. Figure out why sessions persisted on new tabs (something to do with jwts)
-3. more things
+3. Add .py cache files to git ignore
+4. more things
 
 ### To run locally
 
@@ -41,7 +42,7 @@ _To start dev environment_
 2. In your terminal, run `docker-machine create --driver virtualbox default`
 3. Run `eval $(docker-machine env default)` after the docker-machine is done building
 4. Run `docker-machine ls` and copy the address of the default running docker machine
-5. In the root dir, CHANGE the field `REACT_APP_USERS_SERVICE` to the ip address you copied
+5. In the root dir, CHANGE the field `REACT_APP_USERS_SERVICE` to the ip address you copied (have to change/do something about this)
 6. Still within root dir of the project, run `docker-compose -f docker-compose-dev.yml build` to build the project
 7. Still within the root dir, run `docker-compose -f docker-compose-dev.yml up -d` to start the container
 8. Navigate to the address of your docker machine in your browser to see the running app
