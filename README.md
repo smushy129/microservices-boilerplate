@@ -1,4 +1,4 @@
-#High Level Architecture
+# High Level Architecture
 
 This project uses `microservice architecture`, where each service is listed under `/services`. Additionally, it makes use of containerization with [Docker](https://www.docker.com/) so that `dev` and `prod` environments are as similar as possible.
 Each service has its own Dockerfiles for `dev`, `staging`, and `prod`
@@ -24,5 +24,29 @@ This is configured in `docker-push.sh`. This will push your docker container to 
 
 ### To run locally
 
-1. Install [Docker](https://docs.docker.com/compose/install/)
-2. more steps to come
+_Dependencies Required_
+
+1. Download and install [Docker](https://docs.docker.com/compose/install/)
+   Run these commands to verify you successfully installed
+   - docker -v
+   - docker-compose -v
+   - docker-machine -v
+
+2) Download and install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+   This is needed to run docker
+
+_To start dev environment_
+
+1. Navigate to `services/client` and run `npm install`
+2. In your terminal, run `docker-machine create --driver virtualbox default`
+3. Run `eval $(docker-machine env default)` after the docker-machine is done building
+4. Run `docker-machine ls` and copy the address of the default running docker machine
+5. In the root dir, CHANGE the field `REACT_APP_USERS_SERVICE` to the ip address you copied
+6. Still within root dir of the project, run `docker-compose -f docker-compose-dev.yml build` to build the project
+7. Still within the root dir, run `docker-compose -f docker-compose-dev.yml up -d` to start the container
+8. Navigate to the address of your docker machine in your browser to see the running app
+
+_FAQ_
+
+1. `Error with pre-create check: "failure getting a version tag from the Github API response (are you getting rate limited by Github?)`
+   Try this https://github.com/docker/machine/issues/3210#issuecomment-203227523
